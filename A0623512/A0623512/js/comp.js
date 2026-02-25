@@ -1014,7 +1014,12 @@ myView.controller('popupcompCtrl', [
           e.IsVisible = !0
         }),
         (e.init = function () {
-            ;(e.popupOn = !1),
+          debugger
+          //APT: restore student statedata
+          //studStateData - is student's data from the savvas server. into the .js file.
+          e.$parent.appData.data.tincan = studStateData.body;
+          //APT: End: 
+          ;(e.popupOn = !1),
             (e.savexit = !1),
             e.processRawDB(),
             (e.languageTxt =
@@ -1754,6 +1759,9 @@ myView.controller('popupcompCtrl', [
           }
         }),
         (e.setupNextQns = function () {
+          //APT (MELLITR-9441): Check and reset the Variable 
+          if(e.currentOptions==-1 || e.currentOptions>=e.wordSet.length) e.currentOptions = 0;
+          //APT: end Remove
           ;(e.currentActiveLeaves = e.activeLeafSet[e.playMode].slice()),
             (e.correctOption = e.wordSet[e.currentOptions][0])
           for (var n = 0; n < e.currentActiveLeaves.length; )
