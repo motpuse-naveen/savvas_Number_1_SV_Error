@@ -1754,6 +1754,9 @@ myView.controller("popupcompCtrl", [
           }
         }),
         (e.setupNextQns = function () {
+            //APT (MELLITR-9441): Check and reset the Variable 
+          if(e.currentOptions==-1 || e.currentOptions>=e.wordSet.length) e.currentOptions = 0;
+          //APT: end Remove
           (e.currentActiveLeaves = e.activeLeafSet[e.playMode].slice()),
             (e.correctOption = e.wordSet[e.currentOptions][0]);
           for (var n = 0; n < e.currentActiveLeaves.length; )
